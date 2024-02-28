@@ -17,6 +17,7 @@ set(SRC
 )
 
 set(TEST_SRC
+        src/Error/Error.cpp
         tests/test.cpp
         tests/Error.cpp
 )
@@ -38,7 +39,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_executable(${TEST_NAME} ${SRC} ${TEST_SRC})
+add_executable(${TEST_NAME} ${TEST_SRC})
 target_link_libraries(${TEST_NAME} PUBLIC gtest_main)
 
 include(CTest)
