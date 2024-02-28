@@ -3,4 +3,5 @@
 build/
 cmake-build-debug/
 
+johnDoe
 unit_test

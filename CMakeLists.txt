@@ -6,7 +6,7 @@ project(Calculator VERSION 1.0
         DESCRIPTION "I love C++"
         LANGUAGES CXX)
 
-SET(NAME "calculator")
+SET(NAME "johnDoe")
 SET(TEST_NAME "unit_test")
 
 set(CMAKE_CXX_STANDARD 17)
@@ -17,9 +17,9 @@ set(SRC
 )
 
 set(TEST_SRC
-        src/Error/Error.cpp
         tests/test.cpp
         tests/Error.cpp
+        tests/Calculator.cpp
 )
 
 add_executable(${NAME} main.cpp ${SRC})
@@ -39,7 +39,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_executable(${TEST_NAME} ${TEST_SRC})
+add_executable(${TEST_NAME} ${SRC} ${TEST_SRC})
 target_link_libraries(${TEST_NAME} PUBLIC gtest_main)
 
 include(CTest)
@@ -47,3 +47,6 @@ include(GoogleTest)
 gtest_discover_tests(${TEST_NAME})
 
 set_target_properties(${TEST_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+
+include_directories(${TEST_NAME} PUBLIC src/Calculator)
+include_directories(${TEST_NAME} PUBLIC src/Error)
