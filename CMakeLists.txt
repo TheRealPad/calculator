@@ -12,12 +12,21 @@ SET(TEST_NAME "unit_test")
 set(CMAKE_CXX_STANDARD 17)
 
 set(SRC
-        main.cpp
+        src/Calculator/Calculator.cpp
+        src/Error/Error.cpp
 )
 
-add_executable(${NAME} ${SRC})
+set(TEST_SRC
+        tests/test.cpp
+        tests/Error.cpp
+)
+
+add_executable(${NAME} main.cpp ${SRC})
 
 set_target_properties(${NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+
+include_directories(${NAME} PUBLIC src/Calculator)
+include_directories(${NAME} PUBLIC src/Error)
 
 add_compile_options(-fPIC)
 
@@ -29,9 +38,11 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_executable(${TEST_NAME} tests/test.cpp)
+add_executable(${TEST_NAME} ${SRC} ${TEST_SRC})
 target_link_libraries(${TEST_NAME} PUBLIC gtest_main)
 
 include(CTest)
 include(GoogleTest)
 gtest_discover_tests(${TEST_NAME})
+
+set_target_properties(${TEST_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
