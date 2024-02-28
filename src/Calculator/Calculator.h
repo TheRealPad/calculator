@@ -15,11 +15,10 @@ namespace Calculator {
         public:
             Calculator();
             ~Calculator();
-            bool run();
+            void run();
             static void description();
 
         private:
-            void handleInput();
             static void prompt();
 
             std::map<std::string, std::string> _previousResults;

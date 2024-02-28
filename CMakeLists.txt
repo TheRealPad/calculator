@@ -14,6 +14,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(SRC
         src/Calculator/Calculator.cpp
         src/Error/Error.cpp
+        src/OperationsPriorities/OperationsPriorities.cpp
+        src/OperationsPriorities/ProxyOperationsPriorities.cpp
 )
 
 set(TEST_SRC
@@ -28,6 +30,9 @@ set_target_properties(${NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOUR
 
 include_directories(src/Calculator)
 include_directories(src/Error)
+include_directories(src/Interface)
+include_directories(src/OperationsPriorities)
+include_directories(src/InfiniteNumbers)
 
 add_compile_options(-fPIC)
 
