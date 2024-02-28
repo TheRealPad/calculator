@@ -5,6 +5,8 @@
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
 
+#include <map>
+
 namespace Calculator {
 
     class Calculator {
@@ -14,6 +16,12 @@ namespace Calculator {
             ~Calculator();
             bool run();
             static void description();
+
+        private:
+            void handleInput();
+            static void prompt();
+
+            std::map<std::string, std::string> _previousResults;
 
     };
 
