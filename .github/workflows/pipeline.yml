@@ -23,4 +23,4 @@ jobs:
       run: make
 
     - name: Test
-      run: ./test_creditCardValidator
+      run: ./unit_test
