@@ -26,8 +26,8 @@ add_executable(${NAME} main.cpp ${SRC})
 
 set_target_properties(${NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
-include_directories(${NAME} PUBLIC src/Calculator)
-include_directories(${NAME} PUBLIC src/Error)
+include_directories(src/Calculator)
+include_directories(src/Error)
 
 add_compile_options(-fPIC)
 
@@ -47,6 +47,3 @@ include(GoogleTest)
 gtest_discover_tests(${TEST_NAME})
 
 set_target_properties(${TEST_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
-
-include_directories(${TEST_NAME} PUBLIC src/Calculator)
-include_directories(${TEST_NAME} PUBLIC src/Error)
