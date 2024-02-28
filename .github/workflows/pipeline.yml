@@ -19,9 +19,6 @@ jobs:
     - name: Configure CMake
       run: cmake .
 
-    - name: Clean build
-      run: make clean
-
     - name: Build
       run: make
 

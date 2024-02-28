@@ -6,7 +6,7 @@ project(Calculator VERSION 1.0
         DESCRIPTION "I love C++"
         LANGUAGES CXX)
 
-SET(NAME "johnDoe")
+SET(NAME "calculator")
 SET(TEST_NAME "unit_test")
 
 set(CMAKE_CXX_STANDARD 17)
