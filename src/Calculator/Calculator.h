@@ -6,6 +6,7 @@
 #define CALCULATOR_H
 
 #include <map>
+#include <string>
 
 namespace Calculator {
 
