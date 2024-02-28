@@ -5,6 +5,7 @@
 #ifndef PROXYOPERATIONSPRIORITIES_H
 #define PROXYOPERATIONSPRIORITIES_H
 
+#include <memory>
 #include "OperationsPriorities.h"
 
 namespace Operations {
