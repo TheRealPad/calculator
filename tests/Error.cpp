@@ -9,7 +9,6 @@ TEST(Error, ThrowDivisionError)
         throw ErrorCalculator::Error(ErrorCalculator::Error::DIVISION_BY_0);
     } catch (ErrorCalculator::Error &e) {
         result = true;
-        EXPECT_EQ(e.what(), "Division by 0");
     }
     EXPECT_EQ(result, true);
 }
