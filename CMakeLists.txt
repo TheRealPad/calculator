@@ -6,10 +6,10 @@ project(Calculator VERSION 1.0
         DESCRIPTION "I love C++"
         LANGUAGES CXX)
 
+set(CMAKE_CXX_STANDARD 17)
+
 SET(NAME "johnDoe")
 SET(TEST_NAME "unit_test")
-
-set(CMAKE_CXX_STANDARD 17)
 
 set(SRC
         src/Calculator/Calculator.cpp
@@ -24,6 +24,7 @@ set(TEST_SRC
         tests/Error.cpp
         tests/Calculator.cpp
         tests/OperationsPriorities.cpp
+        tests/InfiniteNumber.cpp
 )
 
 add_executable(${NAME} main.cpp ${SRC})
