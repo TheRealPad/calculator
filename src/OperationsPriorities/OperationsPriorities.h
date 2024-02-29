@@ -16,6 +16,9 @@ namespace Operations {
             OperationsPriorities() = default;
             ~OperationsPriorities() override = default;
             std::string makeOperation(std::string &operation) override;
+
+        private:
+            std::string createBlock(std::string &block);
     };
 
 } // Operations

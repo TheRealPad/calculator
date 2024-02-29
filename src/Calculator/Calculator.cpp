@@ -32,7 +32,7 @@ namespace Calculator {
 
         prompt();
         while (std::getline(std::cin, input)) {
-            if (input.empty()) {
+            if (input.empty() || input == "exit") {
                 std::cout << "Input terminated." << std::endl;
                 break;
             }

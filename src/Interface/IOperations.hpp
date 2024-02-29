@@ -13,6 +13,12 @@ namespace Operations {
 
         public:
             virtual ~IOperations() = default;
+
+            /**
+             * \brief take a string as a paramater containing only character from 0 to 9 and + - * / %
+             * \param operation
+             * \return result of the operation
+             */
             virtual std::string makeOperation(std::string &operation) = 0;
 
     };
