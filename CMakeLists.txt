@@ -22,6 +22,7 @@ set(TEST_SRC
         tests/test.cpp
         tests/Error.cpp
         tests/Calculator.cpp
+        tests/OperationsPriorities.cpp
 )
 
 add_executable(${NAME} main.cpp ${SRC})

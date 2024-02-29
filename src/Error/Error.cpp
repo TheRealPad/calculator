@@ -20,6 +20,8 @@ namespace ErrorCalculator {
             return this->_errorMsg.c_str();
         if (this->_error == ErrorType::DIVISION_BY_0)
             return "Division by 0";
+        if (this->_error == ErrorType::TYPO_USER_INPUT)
+            return "Typo in user input";
         return "Unknow error";
     }
 

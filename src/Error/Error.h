@@ -16,7 +16,8 @@ namespace ErrorCalculator {
 
             enum ErrorType {
                 CUSTOM,
-                DIVISION_BY_0
+                DIVISION_BY_0,
+                TYPO_USER_INPUT
             };
             Error() = default;
             ~Error() override = default;
