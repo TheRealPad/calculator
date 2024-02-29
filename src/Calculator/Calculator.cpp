@@ -16,7 +16,14 @@ namespace Calculator {
     Calculator::~Calculator() = default;
 
     void Calculator::description() {
-        std::cout << "This is the class Calculator" << std::endl;
+        std::cout << "The calculator can handle:" << std::endl << std::endl;
+        std::cout << "\taddition: +" << std::endl;
+        std::cout << "\tsubstraction: -" << std::endl;
+        std::cout << "\tmultiplication: *" << std::endl;
+        std::cout << "\tdivision: /" << std::endl;
+        std::cout << "\tmodulo: % (rest of the division)" << std::endl;
+        std::cout << std::endl << "you can enter your calcul the following way:" << std::endl;
+        std::cout << std::endl << "\t(10 + 20) * 5" << std::endl << std::endl;
     }
 
     void Calculator::run() {
