@@ -16,6 +16,7 @@ set(SRC
         src/Error/Error.cpp
         src/OperationsPriorities/OperationsPriorities.cpp
         src/OperationsPriorities/ProxyOperationsPriorities.cpp
+        src/InfiniteNumbers/InfiniteNumber.cpp
 )
 
 set(TEST_SRC

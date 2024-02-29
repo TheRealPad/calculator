@@ -10,7 +10,7 @@
 
 namespace Operations {
 
-    class OperationsPriorities : public IOperations {
+    class OperationsPriorities : IOperations {
 
         public:
             OperationsPriorities() = default;
