@@ -4,15 +4,35 @@
 
 #include <memory>
 #include <vector>
+#include <algorithm>
 #include "OperationsPriorities.h"
 #include "Error.h"
 #include "InfiniteNumber.h"
 
 namespace Operations {
 
+   std::string OperationsPriorities::operatorPriorities(std::vector<std::string> &blocks, std::vector<std::string> &operators) {
+       std::unique_ptr<IOperations> infiniteNumber = std::make_unique<InfiniteNumber>();
+       std::string finalResult;
+
+       for (auto c : {"*", "/", "%", "+", "-"}) {
+           if (std::count(operators.begin(), operators.end(), c)) {
+               for (unsigned int i = 0; i < operators.size(); ++i) {
+                   std::string str = blocks[i] + operators[i] + blocks[i + 1];
+                   if (operators[i] == c) {
+                       const std::string result = infiniteNumber->makeOperation(str);
+                       blocks[i] = result;
+                       blocks[i + 1] = result;
+                       finalResult = result;
+                   }
+               }
+           }
+       }
+       return finalResult;
+   }
+
     // gérer nombre négatif
     std::string OperationsPriorities::createBlock(std::string &block) {
-        std::unique_ptr<IOperations> infiniteNumber = std::make_unique<InfiniteNumber>();
         std::vector<std::string> blocks;
         std::vector<std::string> operators;
         unsigned int nbrParenthesis = 0;
@@ -49,36 +69,17 @@ namespace Operations {
             throw ErrorCalculator::Error(ErrorCalculator::Error::TYPO_USER_INPUT);
         for (auto &b : blocks) {
             if (b[0] == '(') {
-                std::string pad = b.substr(1, b.size() - 2);
-                if (!this->_previousResults.count(pad))
-                    this->_previousResults[pad] = this->createBlock(pad);
-                b = this->_previousResults[pad];
+                std::string tmp = b.substr(1, b.size() - 2);
+                if (!this->_previousResults.count(tmp))
+                    this->_previousResults[tmp] = this->createBlock(tmp);
+                b = this->_previousResults[tmp];
             }
         }
-        std::string lastResult;
-        for (auto c : {"*", "/", "%", "+", "-"}) {
-            if (std::count(operators.begin(), operators.end(), c)) {
-                for (unsigned int i = 0; i < operators.size(); ++i) {
-                    std::string str = blocks[i] + operators[i] + blocks[i + 1];
-                    if (operators[i] == c) {
-                        const std::string result = infiniteNumber->makeOperation(str);
-                        blocks[i] = result;
-                        blocks[i + 1] = result;
-                        lastResult = result;
-                    }
-                }
-            }
-        }
-        return lastResult;
+        return this->operatorPriorities(blocks, operators);
     }
 
     std::string OperationsPriorities::makeOperation(std::string &operation) {
-        // std::unique_ptr<Operations::IOperations> infiniteNumber = std::make_unique<Operations::InfiniteNumber>();
-        // std::string str = "1 + (1 + 1)";
-        // std::string str = "((1+2)-4)*(5/(2+3))+3";
-        // str.erase(remove_if(str.begin(), str.end(), isspace), str.end());
         operation.erase(remove_if(operation.begin(), operation.end(), isspace), operation.end());
-        // std::cout << "coucou " << this->createBlock(operation) << std::endl;
         return this->createBlock(operation);
     }
 
