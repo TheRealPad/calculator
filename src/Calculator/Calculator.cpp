@@ -9,6 +9,7 @@
 #include "Error.h"
 
 namespace Calculator {
+
     Calculator::Calculator() {
         description();
     }
@@ -51,7 +52,5 @@ namespace Calculator {
     void Calculator::prompt() {
         std::cout << "[calcul] => ";
     }
-
-
 
 }  // Calculator

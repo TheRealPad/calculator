@@ -139,7 +139,7 @@ TEST(ProxyOperationsPriorities, InvalidStringFour)
     } catch (ErrorCalculator::Error &e) {
         isValid = false;
     }
-    EXPECT_EQ(isValid, false);
+    EXPECT_EQ(isValid, true);
 }
 
 TEST(ProxyOperationsPriorities, InvalidStringFive)

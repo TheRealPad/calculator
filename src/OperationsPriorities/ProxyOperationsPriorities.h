@@ -17,8 +17,6 @@ namespace Operations {
             std::string makeOperation(std::string &operation) override;
 
         private:
-            bool checkParenthesis(std::string const &operation);
-
             std::unique_ptr<OperationsPriorities> _operationsPriorities;
     };
 

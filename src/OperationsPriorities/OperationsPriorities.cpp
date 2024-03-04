@@ -71,7 +71,6 @@ namespace Operations {
             blocks.push_back(block);
         if (operators.size() != blocks.size() - 1)
             throw ErrorCalculator::Error(ErrorCalculator::Error::TYPO_USER_INPUT);
-       // mettre dans la première boucle
         for (auto &b : blocks) {
             if (b[0] == '(') {
                 std::string tmp = b.substr(1, b.size() - 2);
