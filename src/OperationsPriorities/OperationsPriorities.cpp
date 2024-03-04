@@ -3,7 +3,6 @@
 //
 
 #include <memory>
-#include <vector>
 #include <algorithm>
 #include "OperationsPriorities.h"
 #include "Error.h"
