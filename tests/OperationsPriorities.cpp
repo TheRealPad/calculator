@@ -155,3 +155,30 @@ TEST(ProxyOperationsPriorities, InvalidStringFive)
     }
     EXPECT_EQ(isValid, false);
 }
+
+TEST(ProxyOperationsPriorities, OperatorPriorityOne)
+{
+    std::unique_ptr<Operations::IOperations> operations = std::make_unique<Operations::ProxyOperationsPriorities>();
+    std::string str = "1+10*2";
+    const std::string result = operations->makeOperation(str);
+
+    EXPECT_EQ(result, "21");
+}
+
+TEST(ProxyOperationsPriorities, OperatorPriorityTwo)
+{
+    std::unique_ptr<Operations::IOperations> operations = std::make_unique<Operations::ProxyOperationsPriorities>();
+    std::string str = "(1+10)*2";
+    const std::string result = operations->makeOperation(str);
+
+    EXPECT_EQ(result, "22");
+}
+
+TEST(ProxyOperationsPriorities, OperatorPriorityThree)
+{
+    std::unique_ptr<Operations::IOperations> operations = std::make_unique<Operations::ProxyOperationsPriorities>();
+    std::string str = "((1+2)-4)*(5/(2+3))+3";
+    const std::string result = operations->makeOperation(str);
+
+    EXPECT_EQ(result, "2");
+}
