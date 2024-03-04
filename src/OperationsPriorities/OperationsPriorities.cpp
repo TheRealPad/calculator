@@ -12,11 +12,17 @@ namespace Operations {
 
    std::string OperationsPriorities::operatorPriorities(std::vector<std::string> &blocks, std::vector<std::string> &operators) {
        std::unique_ptr<IOperations> infiniteNumber = std::make_unique<InfiniteNumber>();
-       std::string finalResult;
+       std::string finalResult = blocks[0];
 
+       if (finalResult[0] == this->_negativeSymbol)
+            finalResult[0] = '-';
        for (auto c : {"*", "/", "%", "+", "-"}) {
            if (std::count(operators.begin(), operators.end(), c)) {
                for (unsigned int i = 0; i < operators.size(); ++i) {
+                   if (blocks[i][0] == this->_negativeSymbol)
+                        blocks[i][0] = '-';
+                   if (blocks[i + 1][0] == this->_negativeSymbol)
+                       blocks[i + 1][0] = '-';
                    std::string str = blocks[i] + operators[i] + blocks[i + 1];
                    if (operators[i] == c) {
                        const std::string result = infiniteNumber->makeOperation(str);
@@ -30,7 +36,6 @@ namespace Operations {
        return finalResult;
    }
 
-    // gérer nombre négatif
     std::string OperationsPriorities::createBlock(std::string &block) {
         std::vector<std::string> blocks;
         std::vector<std::string> operators;
@@ -66,6 +71,7 @@ namespace Operations {
             blocks.push_back(block);
         if (operators.size() != blocks.size() - 1)
             throw ErrorCalculator::Error(ErrorCalculator::Error::TYPO_USER_INPUT);
+       // mettre dans la première boucle
         for (auto &b : blocks) {
             if (b[0] == '(') {
                 std::string tmp = b.substr(1, b.size() - 2);
@@ -78,8 +84,11 @@ namespace Operations {
     }
 
     std::string OperationsPriorities::makeOperation(std::string &operation) {
-        operation.erase(remove_if(operation.begin(), operation.end(), isspace), operation.end());
-        return this->createBlock(operation);
+       operation.erase(remove_if(operation.begin(), operation.end(), isspace), operation.end());
+       for (unsigned int i = 0; i < operation.size(); ++i)
+           if (operation[i] == '-' && (i == 0 || operation[i - 1] == '+' || operation[i - 1] == '*' || operation[i - 1] == '/' || operation[i - 1] == '%' || operation[i - 1] == '-'))
+               operation[i] = this->_negativeSymbol;
+       return this->createBlock(operation);
     }
 
 }

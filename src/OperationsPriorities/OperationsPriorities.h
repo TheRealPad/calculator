@@ -24,6 +24,7 @@ namespace Operations {
             std::string operatorPriorities(std::vector<std::string> &blocks, std::vector<std::string> &operators);
 
             std::map<std::string, std::string> _previousResults;
+            const char _negativeSymbol = 'a';
     };
 
 } // Operations

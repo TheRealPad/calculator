@@ -182,3 +182,30 @@ TEST(ProxyOperationsPriorities, OperatorPriorityThree)
 
     EXPECT_EQ(result, "2");
 }
+
+TEST(ProxyOperationsPriorities, NegativeNumbersOne)
+{
+    std::unique_ptr<Operations::IOperations> operations = std::make_unique<Operations::ProxyOperationsPriorities>();
+    std::string str = "-1+1";
+    const std::string result = operations->makeOperation(str);
+
+    EXPECT_EQ(result, "0");
+}
+
+TEST(ProxyOperationsPriorities, NegativeNumbersTwo)
+{
+    std::unique_ptr<Operations::IOperations> operations = std::make_unique<Operations::ProxyOperationsPriorities>();
+    std::string str = "1+-1";
+    const std::string result = operations->makeOperation(str);
+
+    EXPECT_EQ(result, "0");
+}
+
+TEST(ProxyOperationsPriorities, NegativeNumbersThree)
+{
+    std::unique_ptr<Operations::IOperations> operations = std::make_unique<Operations::ProxyOperationsPriorities>();
+    std::string str = "1--1";
+    const std::string result = operations->makeOperation(str);
+
+    EXPECT_EQ(result, "2");
+}
