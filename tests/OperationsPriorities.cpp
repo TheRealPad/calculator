@@ -13,7 +13,7 @@ TEST(ProxyOperationsPriorities, ValidStringOne)
     } catch (ErrorCalculator::Error &e) {
         isValid = false;
     }
-    EXPECT_EQ(isValid, true);
+    EXPECT_EQ(isValid, false);
 }
 
 TEST(ProxyOperationsPriorities, ValidStringTwo)

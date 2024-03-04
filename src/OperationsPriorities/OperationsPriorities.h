@@ -6,6 +6,7 @@
 #define OPERATIONSPRIORITIES_H
 
 #include <iostream>
+#include <map>
 #include "IOperations.hpp"
 
 namespace Operations {
@@ -19,6 +20,8 @@ namespace Operations {
 
         private:
             std::string createBlock(std::string &block);
+
+            std::map<std::string, std::string> _previousResults;
     };
 
 } // Operations
